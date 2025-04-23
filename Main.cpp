@@ -1,27 +1,57 @@
+// Email: nitzanwa@gmail.com
+
 #include <iostream>
-#include "SquareMat.h"
+#include "include/SquareMat.hpp"
 using namespace std;
 using namespace theMatrix;
 
 int main() {
-    try {
-        SquareMat mat1(2);
-        mat1.setFullMatrix();
-        SquareMat mat2(2);
-        mat2.setFullMatrix();
+    SquareMat A(2), B(2);
+    double scalar;
 
-        // נגיד שכבר מילאנו את הערכים של mat בדרך כלשהי
-        // כעת מדפיסים בעזרת האופרטור שהגדרנו
-        cout << "mat1:" << endl;
-        cout << mat1 << endl;
-        cout << "mat2:" << endl;
-        cout << mat2 << endl;
-        cout << "mat multiplied:" << endl;
-        cout << mat1*mat2 << endl;
+    cout << "Enter values for Matrix A:" << endl;
+    A.setFullMatrix();
 
-    }
-    catch(const exception& e){
-        cerr << "Error: " << e.what() << endl;
-    }
+    cout << "Enter values for Matrix B:" << endl;
+    B.setFullMatrix();
+
+    cout << "Enter a scalar value: ";
+    cin >> scalar;
+
+    cout << "\n--- Operations on A and B ---\n";
+    cout << "A + B =\n" << (A + B);
+    cout << "A - B =\n" << (A - B);
+    cout << "A * B =\n" << (A * B);
+    cout << "A % B (element-wise) =\n" << (A % B);
+
+    cout << "\n--- Operations with scalar " << scalar << " ---\n";
+    cout << "A * scalar =\n" << (A * scalar);
+    cout << "scalar * A =\n" << (scalar * A);
+    cout << "A / scalar =\n" << (A / scalar);
+    if (scalar != 0)
+        cout << "A % scalar =\n" << (A % static_cast<int>(scalar));
+
+    cout << "\n--- Unary operations ---\n";
+    cout << "-A =\n" << (-A);
+    cout << "++A =\n" << (++A);
+    cout << "A++ =\n" << (A++);
+    cout << "--A =\n" << (--A);
+    cout << "A-- =\n" << (A--);
+
+    cout << "\n--- Transpose and Power ---\n";
+    cout << "~A =\n" << (~A);
+    cout << "A ^ 2 =\n" << (A ^ 2);
+
+    cout << "\n--- Determinant ---\n";
+    cout << "!A = " << !A << endl;
+
+    cout << "\n--- Comparisons ---\n";
+    cout << "A == B: " << (A == B ? "true" : "false") << endl;
+    cout << "A != B: " << (A != B ? "true" : "false") << endl;
+    cout << "A < B:  " << (A < B ? "true" : "false") << endl;
+    cout << "A > B:  " << (A > B ? "true" : "false") << endl;
+    cout << "A <= B: " << (A <= B ? "true" : "false") << endl;
+    cout << "A >= B: " << (A >= B ? "true" : "false") << endl;
+
     return 0;
 }
