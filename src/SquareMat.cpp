@@ -268,19 +268,15 @@ namespace theMatrix {
         return matrix[row];
     }
 
-    // Check if sum of elements is equal
+    // Check if a sum of elements is equal
     bool operator==(const SquareMat &a, const SquareMat &b) {
-        if (a.size != b.size) {
-            throw invalid_argument("Matrices must be same size for equality.");
-        }
-        double sum_a = 0.0;
-        double sum_b = 0.0;
-        for (int i = 0; i < a.size; ++i) {
-            for (int j = 0; j < a.size; ++j) {
+        double sum_a = 0.0, sum_b = 0.0;
+        for (int i = 0; i < a.size; ++i)
+            for (int j = 0; j < a.size; ++j)
                 sum_a += a.matrix[i][j];
+        for (int i = 0; i < b.size; ++i)
+            for (int j = 0; j < b.size; ++j)
                 sum_b += b.matrix[i][j];
-            }
-        }
         return sum_a == sum_b;
     }
 
@@ -291,16 +287,13 @@ namespace theMatrix {
 
     // Compare sum of elements (less than)
     bool operator<(const SquareMat &a, const SquareMat &b) {
-        if (a.size != b.size) {
-            throw invalid_argument("Matrices must be same size for comparison.");
-        }
         double sum_a = 0.0, sum_b = 0.0;
-        for (int i = 0; i < a.size; ++i) {
-            for (int j = 0; j < a.size; ++j) {
+        for (int i = 0; i < a.size; ++i)
+            for (int j = 0; j < a.size; ++j)
                 sum_a += a.matrix[i][j];
+        for (int i = 0; i < b.size; ++i)
+            for (int j = 0; j < b.size; ++j)
                 sum_b += b.matrix[i][j];
-            }
-        }
         return sum_a < sum_b;
     }
 
@@ -446,7 +439,7 @@ namespace theMatrix {
             for (int j = 0; j < mat.size; ++j) {
                 os << mat.matrix[i][j];
                 if (j != mat.size - 1) {
-                    os << ' '; // רווח בין איברים
+                    os << ' ';
                 }
             }
             os << " |" << std::endl;
